@@ -1,0 +1,41 @@
+# SOME LIGHT THEMES
+# theme = "github_light_colorblind"
+# theme = "onelight"
+ 
+# A FEW DARK THEMES
+# theme = "monokai_pro"
+theme = "github_dark"
+# theme = "kanagawa"
+# theme = "sonokai"
+# theme = "onedark"
+
+[editor]
+bufferline = "multiple" # show opened buffers as tabs, when more than one exists.
+line-number = "relative" # To make relative line counts easier
+true-color = true
+color-modes = true  # Change color for helix modes (NOR, INS, SEL...)
+
+[editor.indent-guides]
+render = true
+character = "▏"  # Some characters that work well: "▏", "┆", "┊", "⸽", "╎"
+skip-levels = 1
+
+[editor.cursor-shape]
+insert = "block"
+normal = "block"
+select = "underline"
+
+[editor.soft-wrap]
+enable = true
+wrap-indicator = ""  # set wrap-indicator to "" to hide it
+
+[editor.statusline]
+# Add the total line numbers of the file
+right = ["diagnostics", "selections", "register", "position", "total-line-numbers", "file-encoding"]
+
+# Create a new minor mode for IPython integration. Works in tmux session only. Launch with +.
+[keys.normal."+"]
+# Open a tmux split on the right and launch a Jupyter console
+i = ":sh tmux split-window -h -l 40%% -c \"#{pane_current_path}\" -d jupyter console --kernel=python -f=\"/tmp/hepl-$PPID.json\" --ZMQTerminalInteractiveShell.include_other_output=True --ZMQTerminalInteractiveShell.other_output_prefix='' > /dev/null"
+# Send selection to Jupyter console
+"ret" = ":pipe-to jupyter run --existing=\"/tmp/hepl-$PPID.json\">/dev/null"

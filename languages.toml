@@ -1,0 +1,14 @@
+[language-server.pylsp.config.pylsp]
+plugins.ruff.enabled = true
+
+[[language]]
+name = "python"
+auto-format = true
+# Requires ruff, that can be installed with pipx
+formatter = { command = "sh", args = ["-c", """
+  ruff check --select I --fix - | ruff format -
+  """] }
+
+[[language]]
+name = "fortran"
+file-types = ["f", "for", "f90", "f95", "f03", "F", "F90", "F95", "F03"]
