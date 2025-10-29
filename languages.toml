@@ -1,9 +1,9 @@
 [language-server.pylsp.config.pylsp]
-plugins.ruff.enabled = true
+plugins.ruff.enabled = false
 
 [[language]]
 name = "python"
-auto-format = true
+auto-format = true  # ":toggle-option autoformat" to disable
 # Requires ruff, that can be installed with pipx
 formatter = { command = "sh", args = ["-c", """
   ruff check --select I --fix - | ruff format -
