@@ -15,10 +15,16 @@ line-number = "relative" # To make relative line counts easier
 true-color = true
 color-modes = true       # Change color for helix modes (NOR, INS, SEL...)
 cursorline = true        # Highlight the line the cursor is currently on
+# Minimum severity to show a diagnostic after the end of a line
+end-of-line-diagnostics = "hint"  # On test
+
+[editor.inline-diagnostics]
+cursor-line = "error"   # Show inline diagnostics when the cursor is on the line
+other-lines = "disable" # Don't expand diagnostics unless the cursor is on the line
 
 [editor.lsp]
 auto-signature-help = false  # Prevent automatic signature popup
-display-inlay-hints = true
+display-messages = true      # Show LSP messages in the status line
 
 [editor.indent-guides]
 render = true
@@ -35,8 +41,16 @@ enable = true
 wrap-indicator = ""  # set wrap-indicator to "" to hide it
 
 [editor.statusline]
-# Add the total line numbers of the file
-right = ["diagnostics", "selections", "register", "position", "total-line-numbers", "file-encoding"]
+# Add the git branch on the left part
+left = ["mode", "spinner", "version-control", "read-only-indicator", "file-modification-indicator"]
+# Make mode more explicit
+mode.normal = "NORMAL"
+mode.select = "SELECT"
+mode.insert = "INSERT"
+# Add file name on center (rather than left)
+center = ["file-name"]
+# Add the relative position and file type on the right part
+right = ["diagnostics", "selections", "register", "position", "position-percentage", "file-encoding", "file-type"]
 
 
 ##############################################################
@@ -60,6 +74,12 @@ j = { k = "normal_mode"}  # Use jk as Esc
 # Move lines up and down:
 "A-j" = ["extend_to_line_bounds", "delete_selection", "paste_after"]
 "A-k" = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+# Use Shift+X to select line above or unselect line
+X = "select_line_above"
+
+[keys.select]
+# Use Shift+X to select line above or unselect line
+X = "select_line_above"
 
 [keys.normal."space"]
 o = "file_picker_in_current_buffer_directory"
