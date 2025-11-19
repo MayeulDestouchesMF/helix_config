@@ -48,7 +48,7 @@ wrap-indicator = ""  # set wrap-indicator to "" to hide it
 # Add the git branch on the left part
 left = ["mode", "spinner", "version-control", "file-name", "read-only-indicator", "file-modification-indicator"]
 # Add the relative position on the right part, remove selections
-right = ["diagnostics", "register", "position", "position-percentage", "file-encoding"]
+right = ["diagnostics", "register", "position", "position-percentage", "file-encoding", "file-type"]
 
 
 ##############################################################
