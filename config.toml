@@ -84,6 +84,15 @@ C-space = "signature_help" # Show signature popup. Close it with ctrl+c
 # Use Shift+X to select line above or unselect line
 X = "select_line_above"
 x = "select_line_below"
+# Lazygit integration, requires lazygit
+C-g = [
+  ":write-all",
+  ":new",
+  ":insert-output lazygit",
+  ":buffer-close!",
+  ":redraw",
+  ":reload-all",
+]
 
 [keys.select]
 # Use Shift+X to select line above or unselect line
