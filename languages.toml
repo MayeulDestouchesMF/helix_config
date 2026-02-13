@@ -1,9 +1,9 @@
 [language-server.pylsp.config.pylsp]
-plugins.ruff.enabled = false
+plugins.ruff.enabled = false # Makes everything slow if true
 
 [[language]]
 name = "python"
-auto-format = true  # ":toggle-option autoformat" to disable
+auto-format = true # ":toggle-option autoformat" to disable
 # Requires ruff, that can be installed with pipx
 formatter = { command = "sh", args = ["-c", """
   ruff check --select I --fix - | ruff format -
@@ -18,9 +18,22 @@ file-types = ["f", "for", "f90", "f95", "f03", "F", "F90", "F95", "F03"]
 name = "html"
 scope = "text.html.basic"
 injection-regex = "html"
-file-types = ["html", "htm", "shtml", "xhtml", "xht", "jsp", "asp", "aspx", "jshtm", "volt", "rhtml", "cshtml"]
+file-types = [
+  "html",
+  "htm",
+  "shtml",
+  "xhtml",
+  "xht",
+  "jsp",
+  "asp",
+  "aspx",
+  "jshtm",
+  "volt",
+  "rhtml",
+  "cshtml",
+]
 block-comment-tokens = { start = "<!--", end = "-->" }
-language-servers = [ "vscode-html-language-server", "superhtml" ]
+language-servers = ["vscode-html-language-server", "superhtml"]
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
@@ -35,6 +48,7 @@ indent = { tab-width = 2, unit = "  " }
 [[grammar]]
 name = "html"
 source = { git = "https://github.com/tree-sitter/tree-sitter-html", rev = "cbb91a0ff3621245e890d1c50cc811bffb77a26b" }
+
 
 [[language]]
 name = "toml"

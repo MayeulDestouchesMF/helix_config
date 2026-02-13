@@ -10,13 +10,12 @@ theme = "github_dark"
 # theme = "onedark"
 
 [editor]
-bufferline = "multiple"  # show opened buffers as tabs, when more than one exists.
-line-number = "relative" # To make relative line counts easier
+bufferline = "multiple" # show opened buffers as tabs, when more than one exists.
 true-color = true
-color-modes = true       # Change color for helix modes (NOR, INS, SEL...)
-cursorline = true        # Highlight the line the cursor is currently on
+color-modes = true      # Change color for helix modes (NOR, INS, SEL...)
+cursorline = true       # Highlight the line the cursor is currently on
 # Minimum severity to show a diagnostic after the end of a line
-end-of-line-diagnostics = "hint"  # On test
+end-of-line-diagnostics = "hint" # On test
 # Trim whitespace preceding line endings on write (default false)
 trim-trailing-whitespace = true
 # Trim extra line endings after the final one on write (default false)
@@ -27,12 +26,12 @@ cursor-line = "error"   # Show inline diagnostics when the cursor is on the line
 other-lines = "disable" # Don't expand diagnostics unless the cursor is on the line
 
 [editor.lsp]
-auto-signature-help = false  # Prevent automatic signature popup
-display-messages = true      # Show LSP messages in the status line
+auto-signature-help = false # Prevent automatic signature popup
+display-messages = true     # Show LSP messages in the status line
 
 [editor.indent-guides]
 render = true
-character = "▏"  # Some characters that work well: "▏", "┆", "┊", "⸽", "╎"
+character = "▏" # Some characters that work well: "▏", "┆", "┊", "⸽", "╎"
 skip-levels = 1
 
 [editor.cursor-shape]
@@ -42,38 +41,49 @@ select = "underline"
 
 [editor.soft-wrap]
 enable = true
-wrap-indicator = ""  # set wrap-indicator to "" to hide it
+wrap-indicator = "" # set wrap-indicator to "" to hide it
 
 [editor.statusline]
-# Add the git branch on the left part
-left = ["mode", "spinner", "version-control", "file-name", "read-only-indicator", "file-modification-indicator"]
-# Add the relative position on the right part, remove selections
-right = ["diagnostics", "register", "position", "position-percentage", "file-encoding", "file-type"]
+# Default for the left part: ["mode", "spinner", "file-name", "read-only-indicator", "file-modification-indicator"]
+left = [
+  "mode",
+  "spinner",
+  "version-control",
+  "file-name",
+  "read-only-indicator",
+  "file-modification-indicator",
+]
+# Default for right part: ["diagnostics", "selections", "register", "position", "file-encoding"]
+right = [
+  "diagnostics",
+  "selections",
+  "register",
+  "position",
+  "position-percentage",
+  "file-encoding",
+  "file-type",
+]
 
 
 ##############################################################
 # Key bindings
 ##############################################################
 
-# Create a new minor mode for IPython integration. Works in tmux session only. Launch with +.
-[keys.normal."+"]
-# Open a tmux split on the right and launch a Jupyter console
-i = ":sh tmux split-window -h -l 50%% -c \"#{pane_current_path}\" -d jupyter console --kernel=python -f=\"/tmp/hepl-$PPID.json\" --ZMQTerminalInteractiveShell.include_other_output=True --ZMQTerminalInteractiveShell.other_output_prefix='' > /dev/null"
-# Send selection to Jupyter console with Return key
-"ret" = ":pipe-to jupyter run --existing=\"/tmp/hepl-$PPID.json\">/dev/null"
-
 [keys.insert]
-C-space = "signature_help"  # Show signature popup. Close it with ctrl+c
-j = { k = "normal_mode"}  # Use jk as Esc
+C-space = "signature_help" # Show signature popup. Close it with ctrl+c
 
 [keys.normal]
-# Fast moves with 2-letter position highlights (faster than using gw)
-"ret" = "goto_word"
 # Move lines up and down:
 "A-j" = ["extend_to_line_bounds", "delete_selection", "paste_after"]
-"A-k" = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+"A-k" = [
+  "extend_to_line_bounds",
+  "delete_selection",
+  "move_line_up",
+  "paste_before",
+]
 # Use Shift+X to select line above or unselect line
 X = "select_line_above"
+x = "select_line_below"
 
 [keys.select]
 # Use Shift+X to select line above or unselect line
