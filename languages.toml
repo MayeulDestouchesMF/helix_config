@@ -20,3 +20,8 @@ indent = { tab-width = 4, unit = "  " }
 # Requires shfmt
 formatter = { command = "shfmt", args = ["-i", "4"] }
 auto-format = true
+
+
+[[language]]
+name = "json"
+formatter = { command = 'python3', args = ["-m", "json.tool"] }
