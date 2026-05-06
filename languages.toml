@@ -3,14 +3,14 @@
 name = "python"
 language-servers = ["ty", "ruff"]
 auto-format = true                # ":toggle-option autoformat" to disable
-# Requires ruff, that can be installed with pipx
+# Requires ruff (can be installed with pipx)
 formatter = { command = "sh", args = ["-c", """
   ruff check --select I --fix - | ruff format -
   """] }
 
 [[language]]
 name = "toml"
-# Requires taplo
+# Requires taplo (can be installed with pipx)
 formatter = { command = "taplo", args = ["format", "-"] }
 auto-format = true
 
@@ -21,7 +21,29 @@ indent = { tab-width = 4, unit = "  " }
 formatter = { command = "shfmt", args = ["-i", "4"] }
 auto-format = true
 
-
 [[language]]
 name = "json"
 formatter = { command = 'python3', args = ["-m", "json.tool"] }
+
+[[language]]
+name = "cpp"
+# Requires clang-format (can be installed with pipx)
+formatter = { command = 'clang-format', args = [
+  "--style={BasedOnStyle: Google, DerivePointerAlignment: true}",
+] }
+auto-format = true
+
+[[language]]
+name = "fortran"
+file-types = [
+  "f",
+  "for",
+  "f90",
+  "f95",
+  "f03",
+  "F",
+  "F90",
+  "F95",
+  "F03",
+  "interface.F90",
+]
