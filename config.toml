@@ -1,9 +1,9 @@
 # SOME LIGHT THEMES
-theme = "github_light_colorblind"
+# theme = "github_light_colorblind"
 # theme = "onelight"
 
 # A FEW DARK THEMES
-# theme = "github_dark"
+theme = "github_dark"
 # theme = "monokai_pro"
 # theme = "kanagawa"
 # theme = "sonokai"

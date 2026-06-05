@@ -47,3 +47,9 @@ file-types = [
   "F03",
   "interface.F90",
 ]
+
+[[language]]
+# Install texlab from prebuild binary for LSP supportlsoA
+name = "latex"
+formatter = { command = "latexindent" }
+auto-format = true
