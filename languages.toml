@@ -1,12 +1,20 @@
 # Completes defaults in https://github.com/helix-editor/helix/blob/master/languages.toml
+
 [[language]]
 name = "python"
-language-servers = ["ty", "ruff"]
-auto-format = true                # ":toggle-option autoformat" to disable
-# Requires ruff (can be installed with pipx)
+# Requires pyright and ruff (can be installed with pipx or uv tool)
+language-servers = ["pyright", "ruff"]
+auto-format = true # ":toggle-option autoformat" to disable
 formatter = { command = "sh", args = ["-c", """
   ruff check --select I --fix - | ruff format -
   """] }
+
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+
+[language-server.pyright.config.python.analysis]
+typeCheckingMode = "basic"
 
 [[language]]
 name = "toml"

@@ -26,8 +26,8 @@ cursor-line = "error"   # Show inline diagnostics when the cursor is on the line
 other-lines = "disable" # Don't expand diagnostics unless the cursor is on the line
 
 [editor.lsp]
-auto-signature-help = false # Prevent automatic signature popup. Space + k to show.
-display-messages = true     # Show LSP messages in the status line
+auto-signature-help = true # Automatic popup for signature of functions. Space + k to show.
+display-messages = true    # Show LSP messages in the status line
 
 [editor.indent-guides]
 render = true
